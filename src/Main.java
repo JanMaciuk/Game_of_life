@@ -7,11 +7,11 @@ public class Main {
     public static void main(String[] args) {
         int size = 10;
         boolean running = true;
+        Scanner userIn = new Scanner(System.in);
         boolean[][] board = createBoard(size);
 
         while (running) {
-            // a key is pressed
-            Scanner userIn = new Scanner(System.in);
+
             System.out.println("Wpisz cokolwiek lub wyjdź za pomocą 'exit'");
             if (userIn.nextLine().equalsIgnoreCase("exit")) {
                 running = false;
@@ -20,10 +20,10 @@ public class Main {
                 Print(board, size);
             }
 
-
         }
 
     }
+
     public static boolean[][] createBoard(int size) {
         boolean[][] board = new boolean[size][size];
         for (int i = 0; i < size; i++) {
@@ -39,10 +39,10 @@ public class Main {
         for (int i = -1; i <= 1; i++) {
             for (int j = -1; j <= 1; j++) {
                 if (i == 0 && j == 0) {
-                    continue;
+                    continue; // komórka początkowa
                 }
                 if (x + i < 0 || x + i >= size || y + j < 0 || y + j >= size) {
-                    continue;
+                    continue; // komórka poza planszą.
                 }
                 if (board[x + i][y + j]) {
                     neighbours++;
