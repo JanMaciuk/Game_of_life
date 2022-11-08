@@ -1,17 +1,16 @@
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.concurrent.TimeUnit;
 
 
 public class Main {
     public static void main(String[] args) {
         int size = 10;
+        int turn = 0;
         boolean running = true;
         Scanner userIn = new Scanner(System.in);
         boolean[][] board = createBoard(size);
 
         while (running) {
-
             System.out.println("Wpisz cokolwiek lub wyjdź za pomocą 'exit'");
             if (userIn.nextLine().equalsIgnoreCase("exit")) {
                 running = false;
@@ -19,7 +18,8 @@ public class Main {
                 board = nextVersion(board, size);
                 Print(board, size);
             }
-
+            turn++;
+            System.out.println("tura: "+turn);
         }
 
     }
@@ -82,7 +82,7 @@ public class Main {
                 if (board[i][j]) {
                     System.out.print("X ");
                 } else {
-                    System.out.print("O ");
+                    System.out.print("' ");
                 }
                 }
             System.out.println();
